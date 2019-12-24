@@ -10,23 +10,21 @@ export class Todo extends Entity {
   })
   id?: string;
 
-  @property({
-    type: 'string',
-    required: true,
-  })
+  @property({type: 'string', required: true})
   title: string;
 
-  @property({
-    type: 'string',
-  })
+  @property({type: 'string'})
   desc?: string;
 
-  @property({
-    type: 'boolean',
-  })
+  @property({type: 'boolean'})
   isComplete?: boolean;
 
-  @belongsTo(() => TodoList)
+  @property({
+    type: 'string',
+    mongodb: {
+      dataType: 'ObjectID',
+    },
+  })
   todoListId: string;
 
   constructor(data?: Partial<Todo>) {
